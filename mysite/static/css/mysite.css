@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'MegaFont';
+    src: url('../fonts/Archivo-VariableFont_wdth_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'MegaFont' !important;
+}
