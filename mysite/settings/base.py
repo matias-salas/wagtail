@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.redirects",
     "wagtail.contrib.settings",
     "wagtail.contrib.modeladmin",
+    "wagtail.contrib.routable_page",
 
     "wagtail.embeds",
     "wagtail.sites",
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.sites',
 
     'allauth',
     'allauth.account',

@@ -17,6 +17,7 @@ class FlexPage(Page):
             ("simple_richtext", blocks.SimpleRichTextBlock()),
             ("cards", blocks.CardBlock()),
             ("cta", blocks.CTABlock()),
+            ("button", blocks.ButtonBlock()),
         ],
         use_json_field=True,
         null=True,

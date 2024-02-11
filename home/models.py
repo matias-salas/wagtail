@@ -8,6 +8,9 @@ from wagtail.fields import StreamField
 from streams import blocks
 from wagtail.models import Orderable
 from modelcluster.fields import ParentalKey
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
+
+from django.shortcuts import render
 
 class HomePageCarouselImages(Orderable):
     """
@@ -27,7 +30,7 @@ class HomePageCarouselImages(Orderable):
         FieldPanel("caption"),
     ]
 
-class HomePage(Page):
+class HomePage(RoutablePageMixin, Page):
     """
         Home page model
     """
@@ -77,3 +80,9 @@ class HomePage(Page):
     class Meta:
         verbose_name = "Home Page"
         verbose_name_plural = "Home Pages"
+
+    @route(r"^subscribe/$")
+    def the_subscribe_page(self, request, *args, **kwargs):
+        context = self.get_context(request, *args, **kwargs)
+        context["a_special_test"] = "Hello World"
+        return render(request, "home/subscribe.html", context)
