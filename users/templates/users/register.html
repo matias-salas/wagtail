@@ -1,0 +1,103 @@
+{% extends "users/layouts/users.html" %}
+
+{% load static %}
+
+
+{% block body-class %}
+{% endblock %}
+
+{% block header-class %}
+{% endblock %}
+
+{% block custom-css-priority %}
+<style>
+    .card-transparent {
+        background: rgba(112, 112, 112, 0.25) !important;
+        /* Fondo blanco con transparencia */
+        border: none !important;
+        /* Sin bordes */
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2) !important;
+        /* Sin sombra */
+        border-radius: 0 !important;
+        /* Sin bordes redondeados */
+    }
+
+    .formulario-centrado {
+        min-height: 100vh;
+        /* Altura completa de la ventana */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 800px !important;
+    }
+</style>
+
+<style>
+    .logo {
+        max-height: 40px;
+        /* Ajusta la altura máxima del logo */
+        width: auto;
+        /* Mantiene la proporción del logo */
+        object-fit: contain;
+        /* Asegura que el logo se ajuste bien dentro de las dimensiones sin distorsionarse */
+        margin: 0 auto;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container formulario-centrado">
+    <div class="col-md-6 col-lg-6 col-sm-12 col-12 col-xl-6">
+        <!-- Tarjeta transparente para el formulario de login -->
+        <div class="card card-transparent">
+            <div class="card-body">
+                <h2 class="card-title text-center">
+                    <!-- Asegúrate de reemplazar '{% static 'img/-_Megatlon blanco.png' %}' con la ruta correcta a tu imagen -->
+                    <img src="{% static 'img/-_Megatlon blanco.png' %}" alt="MEGATLON CORPORATIVO" class="logo">
+                    CORPORATIVO
+                </h2>
+                <form name="f1" id="f1" method="post">
+                    {% csrf_token %}
+                    <!-- Aquí deberías incluir tu token CSRF según el framework que estés utilizando -->
+                    <div class="form-group">
+                        <label for="id_username">Usuario</label>
+                        <input type="text" class="form-control" id="id_username" name="username" maxlength="150"
+                            autofocus required aria-describedby="id_username_helptext" placeholder="Usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_email">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="id_email" name="email" maxlength="254"
+                            placeholder="Correo Electrónico">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password1">Contraseña</label>
+                        <input type="password" class="form-control" id="id_password1" name="password1"
+                            autocomplete="new-password" required aria-describedby="id_password1_helptext"
+                            placeholder="Contraseña">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password2">Confirmar Contraseña</label>
+                        <input type="password" class="form-control" id="id_password2" name="password2"
+                            autocomplete="new-password" required aria-describedby="id_password2_helptext"
+                            placeholder="Confirmar Contraseña">
+                    </div>
+                    <button type="submit" id="btsubmit" class="btn btn-primary btn-block"
+                        style="background-color: #000;">Registráte</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block custom-js %}
+<script>
+    $(document).ready(function(){
+        $('#f1').submit(function(){
+            $('#btsubmit').prop('disabled', true);
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "users/layouts/users.html" %} {% load static %} {% block banner %}
+<section id="banner">
+  <div class="succes-container">
+    <h1 style="color: rgb(50, 179, 50)">¡Verificación exitosa!</h1>
+    <small> Ya podés cerrar esta ventana. </small>
+
+    <div class="start_btn">
+      <button class="button-82-pushable" role="button">
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <a href="{% url 'users:index' %}">
+          <span class="button-82-front"> HOME </span>
+        </a>
+      </button>
+    </div>
+  </div>
+</section>
+{% endblock %} {% block main %}
+<section id="main" class="container"></section>
+{% endblock %}

@@ -9,7 +9,7 @@ from wagtail.snippets.models import register_snippet
 
 from django.shortcuts import render
 # Create your models here.
-
+@register_snippet
 class BlogTenant(models.Model):
     """Blog Tenant Model"""
 
@@ -41,8 +41,6 @@ class BlogTenant(models.Model):
     class Meta:
         verbose_name = "Blog Tenant"
         verbose_name_plural = "Blog Tenants"
-
-register_snippet(BlogTenant)
 
 class BlogListingPage(RoutablePageMixin, Page):
     """Listing page lists all the Blog Detail Pages."""

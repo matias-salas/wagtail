@@ -1,0 +1,104 @@
+{% extends "users/layouts/users.html" %}
+
+{% load static %}
+
+
+{% block body-class %}
+{% endblock %}
+
+{% block header-class %}
+{% endblock %}
+
+{% block custom-css-priority %}
+<style>
+    .card-transparent {
+        background: rgba(112, 112, 112, 0.25) !important; /* Fondo blanco con transparencia */
+        border: none !important; /* Sin bordes */
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2) !important; /* Sin sombra */
+        border-radius: 0 !important; /* Sin bordes redondeados */
+    }
+    .formulario-centrado {
+        min-height: 100vh; /* Altura completa de la ventana */
+        display: flex;
+        justify-content: center;    
+        align-items: center;
+        max-width: 800px !important;
+    }
+</style>
+
+<style>
+    .logo {
+        max-height: 40px; /* Ajusta la altura máxima del logo */
+        width: auto; /* Mantiene la proporción del logo */
+        object-fit: contain; /* Asegura que el logo se ajuste bien dentro de las dimensiones sin distorsionarse */
+        margin: 0 auto;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+    <!-- <section id="main" class="container 75%">
+        <header>
+            <h2>Iniciar Sesion</h2>
+        </header>
+        <div class="box">
+            <form name=f1 id="f1" method="post" >
+                {% csrf_token %}
+                <div class="row uniform 50%">
+                    <div class="6u 12u(mobilep)">
+                        <input type="text" name="username" id="username" value="" placeholder="Usuario" maxlength="50" required/>
+                    </div>
+                    <div class="6u 12u(mobilep)">
+                        <input type="password" id="password" name="password" value="" placeholder="Contraseña" pattern="[a-zA-Z0-9-_.@ ]{0,50}" maxlength="50" required/>
+                    </div>
+                </div>
+                <small id="documentoHelp" class="form-text text-muted">.</small>
+                <div class="row uniform">
+                    <div class="12u">
+                        <ul class="actions align-center">
+                            <li><input id="btsubmit" type="submit" value="Log In" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section> -->
+    <div class="container formulario-centrado">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-12 col-xl-6">
+                <!-- Tarjeta transparente para el formulario de login -->
+                <div class="card card-transparent">
+                    <div class="card-body">
+                        <h2 class="card-title text-center" >
+                        <img src="{% static 'img/-_Megatlon blanco.png' %}" alt="MEGATLON CORPORATIVO" class="logo">
+                        
+                        CORPORATIVO</h2>
+                        <form name=f1 id="f1" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Usuario</label>
+
+                                <input type="text" class="form-control" id="username" placeholder="Usuario" name="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Contraseña</label>
+                                <input type="password" id="password" name="password" value="" placeholder="Contraseña" pattern="[a-zA-Z0-9-_.@ ]{0,50}" maxlength="50" required class="form-control">
+                            </div>
+                            <button type="submit" id="btsubmit" class="btn btn-primary btn-block" style="background-color: #000;">Iniciar sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+{% endblock %}
+
+{% block custom-js %}
+<script>
+    $(document).ready(function(){
+        $('#f1').submit(function(){
+            $('#btsubmit').prop('disabled', true);
+        });
+    });
+</script>
+{% endblock %}

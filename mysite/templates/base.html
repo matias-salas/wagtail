@@ -36,10 +36,19 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/mysite.css' %}">
 
+    <style>
+        .navbar-brand .logo {
+            max-height: 40px; /* Ajusta la altura máxima del logo */
+            width: auto; /* Mantiene la proporción del logo */
+            object-fit: contain; /* Asegura que el logo se ajuste bien dentro de las dimensiones sin distorsionarse */
+        }
+    </style>
     {% block extra_css %}
     {# Override this in templates to add extra stylesheets #}
     {% endblock %}
 </head>
+
+
 
 <body class="{% block body_class %}{% endblock %}">
     {% wagtailuserbar %}
@@ -90,13 +99,19 @@
 
     {# Navbar bootstrap 4 #}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-2">
-        <a class="navbar-brand" href="#">MEGATLON CORPORATIVO</a>
+        
+
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'img/-_Megatlon blanco.png' %}" alt="MEGATLON CORPORATIVO" class="logo">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor01">
+            {% if request.user.is_authenticated %}
+            
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home
@@ -121,10 +136,20 @@
                     </div>
                 </li> -->
             </ul>
+            {% endif %}
+
+            {% if request.user.is_authenticated %}
+
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
             </form>
+            {% else %}
+            <div class="form-inline ml-auto my-2 my-lg-0">
+                <a href="{% url 'users:register' %}" class="btn btn-secondary my-2 my-sm-0 m-auto">Registráte</a>
+            </div>
+            {% endif %}
+
         </div>
     </nav>
 
