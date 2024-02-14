@@ -28,8 +28,9 @@ INSTALLED_APPS = [
     "flex",
     "streams",
     "site_settings",
-    "subscribers",
+    # "subscribers",
     "blog",
+    "core",
     
     "search",
 
@@ -46,8 +47,8 @@ INSTALLED_APPS = [
     "wagtail.documents",
     "wagtail.images",
     "wagtail.search",
-    "wagtail.admin",
     "wagtail",
+    "wagtail.admin",
     "modelcluster",
     "taggit",
     "django.contrib.admin",
@@ -57,6 +58,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 'django.contrib.sites',
+
+    # 'wagtail.contrib.search_promotions',
 
     'users',
 
@@ -114,6 +117,7 @@ DATABASES = {
     }
 
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -175,7 +179,7 @@ WAGTAILSEARCH_BACKENDS = {"default": {"BACKEND": "wagtail.search.backends.databa
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-WAGTAILADMIN_BASE_URL = "http://example.com"
+WAGTAILADMIN_BASE_URL = "https://megatloncorporativo.com"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -184,4 +188,25 @@ AUTH_USER_MODEL = 'users.CustomUser'
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
+]
+# WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'blog/login.html'
+# WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "email-smtp.us-east-2.amazonaws.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "AKIAXWY3PZT2XEL5NLVU"
+EMAIL_HOST_PASSWORD = 'BNYphb2d7zbK4htE0urEh4LRCLcPqpJ3yvEzlXqBu8IM'
+EMAIL_FROM = "Megatlon Blog <noreply@idatatech.ar>"
+DEFAULT_FROM_EMAIL = "Megatlon Blog <noreply@idatatech.ar>"
+
+LOGIN_REDIRECT_URL = 'blog/'
+LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_URL = '/login/'
+
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
+    ('en', "English"),
+    ('fr', "French"),
+    ('es', "Spanish"),
 ]

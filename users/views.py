@@ -85,7 +85,7 @@ class RegisterView(generic.CreateView):
 				message = EmailMessage(subject, html_template, email_from, recipient_list)
 				message.content_subtype = "html"
 				message.send()
-			return render(request, 'users/home.html')
+			return redirect(reverse("users:login"))
 			
 		return render(request, self.template_name, {'form': form})
 	
@@ -194,7 +194,7 @@ def login(request):
 				do_login(request, user)
 				messages.success(request, 'Inicio sesion exitoso', extra_tags='Inicio Sesion')
 				# Y le redireccionamos a la portada
-				return redirect('/')
+				return redirect('/blog/')
 			else:
 				messages.error(request, 'Credenciales invalidas', extra_tags='Inicio Sesion')
 		else:

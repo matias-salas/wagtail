@@ -110,7 +110,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor01">
-            {% if request.user.is_authenticated %}
+            <!-- {% if request.user.is_authenticated %}
             
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -124,7 +124,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/sobre-nosotros/">Sobre Nostros</a>
                 </li>
-                <!-- <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">Dropdown</a>
                     <div class="dropdown-menu">
@@ -134,9 +134,9 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Separated link</a>
                     </div>
-                </li> -->
+                </li>
             </ul>
-            {% endif %}
+            {% endif %} -->
 
             {% if request.user.is_authenticated %}
 
@@ -144,6 +144,9 @@
                 <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
             </form>
+            <div class="form-inline ml-auto my-2 my-lg-0">
+                <a href="{% url 'users:logout' %}" class="btn btn-secondary my-2 my-sm-0 m-auto">Cerrar sesión</a>
+            </div>
             {% else %}
             <div class="form-inline ml-auto my-2 my-lg-0">
                 <a href="{% url 'users:register' %}" class="btn btn-secondary my-2 my-sm-0 m-auto">Registráte</a>

@@ -1,0 +1,45 @@
+:root {
+    --w-color-secondary : #FE7D18;
+    --w-color-border-field-hover : #FE7D18;
+    --w-color-focus : #FE7D18;
+    --w-color-text-link-hover : #ff9900;
+    --w-color-surface-button-hover : #ff9900;
+    --w-color-primary : rgba(162, 0, 255, 0.603);
+    --w-color-secondary-100 : #FE7D18;
+}
+
+@font-face {
+    font-family: 'MegaFont';
+    src: url('../fonts/Archivo-VariableFont_wdth_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'MegaFont' !important;
+}
+
+.content-wrapper{
+    background-color: #000 !important;
+}
+
+a {
+    color: #FE7D18;
+    text-decoration: none;
+}
+
+.w-summary__list{
+    color : #FE7D18;
+}
+
+a:hover{
+    color: #ff9900;
+}
+
+.icon-wrapper {
+    border: 1px solid #FE7D18   !important;
+}
+
+.help-block{
+    display: none   !important;
+}
